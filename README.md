@@ -1,6 +1,6 @@
 # PROJECT DESCRIPTION
 The project consists in processing JSON files and uploading them into a database related to the Sparkify (an streaming app).
-Some JSON files contain data collected from the user activity on the streaming app (directory: /data/log_data). Others files contain metadata on the songs in the app (directory: /data/song_data, source: http://millionsongdataset.com/).
+Some JSON files contain data collected from the user activity on the streaming app (directory: '/data/log_data'). Others files contain metadata on the songs in the app (directory: '/data/song_data', source: http://millionsongdataset.com/).
 The database design was based on the star schema in order to optimize queries on song play analysis. 
 
 # DATABASE DESIGN
@@ -12,17 +12,24 @@ The database contains 4 dimension tables:
 
 And the fact table:
 - songplays: records in log data associated with song plays i.e. records with page NextSong.
+
 Temporary table:
 - temp_log: a temporary table used to load the data on the tables users and songplays.
 For further details, check the ER diagram sparkifydb_erd.png and the file sql_queries.py.
 
 # ETL PROCESS
-The tables songs and artists are loaded with the JSON files found on the directory /data/song_data.
-The tables users and time are loaded with the JSON files found on the directory /data/log_data. User level column (users table) is updated in accordance with the log files.
-JSON files are coverted to pandas DataFrames and they are handled before updating the database. After that, they are loaded in the PostgreSQL trough psycopg2. The SQL statements can be found in the file sql_queries.py.
-Songplays table is loaded with the data from the JSON log files and also with data queried from songs and artists tables.
+
+The tables 'songs' and 'artists' are loaded with the JSON files found in the directory '/data/song_data'.
+
+The tables 'users' and 'time' are loaded with the JSON files found in the directory '/data/log_data'. User level column (users table) is updated in accordance with the log files.
+
+JSON files are coverted to pandas DataFrames and they are handled before updating the database. After that, they are loaded in the PostgreSQL trough 'psycopg2' package. The SQL statements can be found in the file 'sql_queries.py'.
+
+'Songplays' table is loaded with the data from the JSON log files and also with data queried from 'songs' and 'artists' tables.
+
 The log files are imported to a temporary table (temp_log).
-For further details, check the file etl.py.
+
+For further details, check the file 'etl.py'.
 
 # REPOSITORY FILES
 - 'sql_queries.py' contains the commands to create and delete tables, insert and delete data.
