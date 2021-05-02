@@ -9,6 +9,7 @@ The database contains 4 dimension tables:
 - artists: artists in music database.
 - users: users in the app (from log files).
 - time: timestamps of records in songplays broken down into specific units.
+
 And the fact table:
 - songplays: records in log data associated with song plays i.e. records with page NextSong.
 Temporary table:
